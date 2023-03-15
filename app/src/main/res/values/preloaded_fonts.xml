@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="preloaded_fonts" translatable="false">
+        <item>@font/cagliostro</item>
+        <item>@font/charmonman</item>
+        <item>@font/galada</item>
+        <item>@font/lato</item>
+        <item>@font/montserrat_alternates</item>
+        <item>@font/nunito</item>
+        <item>@font/nunito_sans_extralight</item>
+        <item>@font/paprika</item>
+        <item>@font/roboto</item>
+    </array>
+</resources>
