@@ -7,7 +7,9 @@
 
     <action
         android:id="@+id/to_login_fragment"
-        app:destination="@+id/loginFragment" />
+        app:destination="@+id/loginFragment"
+        app:popUpTo="@id/homeFragment"
+        app:popUpToInclusive="true" />
     <action
         android:id="@+id/to_home_fragment"
         app:destination="@+id/homeFragment" />
