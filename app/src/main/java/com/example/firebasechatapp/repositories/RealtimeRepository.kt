@@ -18,7 +18,7 @@ class RealtimeRepository {
         ref.setValue("My first message").await()
     }
 
-    fun getAllMessages() {
+    fun getAllMessages() = callbackFlow<List<String>?> {
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val value = snapshot.getValue<String>()
@@ -29,5 +29,6 @@ class RealtimeRepository {
                 Log.d("debugging", "Failed to read messages", error.toException())
             }
         })
+        awaitClose {}
     }
 }
