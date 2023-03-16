@@ -15,11 +15,11 @@
             android:orientation="horizontal"
             android:weightSum="1">
 
-            <ImageView
+            <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivProfileImg"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:src="@drawable/ic_person" />
+                android:src="@drawable/marilyn_monroe" />
 
             <LinearLayout
                 android:layout_width="match_parent"
