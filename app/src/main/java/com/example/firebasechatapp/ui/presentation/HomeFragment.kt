@@ -20,9 +20,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         super.onBindView(view, savedInstanceState)
 
         binding?.run {
-            btnStart.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeToMessage()
-                navController.navigate(action)
+            btnAdd.setOnClickListener {
+                viewModel.addMessage()
             }
         }
     }
