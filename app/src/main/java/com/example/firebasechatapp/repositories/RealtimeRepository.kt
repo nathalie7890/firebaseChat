@@ -7,6 +7,8 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.channels.awaitClose
+import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
 class RealtimeRepository {
@@ -16,7 +18,7 @@ class RealtimeRepository {
         ref.setValue("My first message").await()
     }
 
-    fun getAllMessages() {
+    fun getAllMessages() = callbackFlow<List<String>?> {
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 val value = snapshot.getValue<String>()
@@ -27,5 +29,6 @@ class RealtimeRepository {
                 Log.d("debugging", "Failed to read messages", error.toException())
             }
         })
+        awaitClose {}
     }
 }
