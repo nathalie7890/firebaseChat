@@ -14,8 +14,8 @@ import javax.inject.Inject
 class SignUpViewModel @Inject constructor(private val authRepo: AuthService) : BaseViewModel() {
     val signupFinish: MutableSharedFlow<Unit> = MutableSharedFlow()
 
-    fun signUp(name: String, email: String, password: String, password2: String) {
-        if (Utils.validate(name, email, password, password2) && password == password2) {
+    fun signUp(name: String, email: String, password: String) {
+        if (Utils.validate(name, email, password)) {
             viewModelScope.launch {
                 safeApiCall {
                     authRepo.register(User(name, email, password))

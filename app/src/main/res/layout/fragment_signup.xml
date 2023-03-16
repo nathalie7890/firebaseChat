@@ -93,6 +93,7 @@
                 android:background="@drawable/orange_rounded_input"
                 android:hint="Username"
                 android:padding="10dp"
+                android:textColor="@color/orange"
                 android:textAlignment="center"
                 android:textColorHint="@color/light_gray" />
 
@@ -103,6 +104,7 @@
                 android:background="@drawable/orange_rounded_input"
                 android:hint="Email"
                 android:padding="10dp"
+                android:textColor="@color/orange"
                 android:layout_marginBottom="8dp"
                 android:textAlignment="center"
                 android:textColorHint="@color/light_gray" />
@@ -113,6 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/orange_rounded_input"
+                android:textColor="@color/orange"
                 android:hint="Password"
                 android:padding="10dp"
                 android:textAlignment="center"
