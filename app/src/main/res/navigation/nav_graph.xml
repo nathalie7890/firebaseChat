@@ -5,11 +5,18 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/homeFragment">
 
+    <action
+        android:id="@+id/to_login_fragment"
+        app:destination="@+id/loginFragment" />
+    <action
+        android:id="@+id/to_home_fragment"
+        app:destination="@+id/homeFragment" />
+
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.example.firebasechatapp.ui.presentation.HomeFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_home_to_message"
             app:destination="@id/messageFragment" />
@@ -18,6 +25,20 @@
         android:id="@+id/messageFragment"
         android:name="com.example.firebasechatapp.ui.presentation.MessageFragment"
         android:label="ChatFragment"
-        tools:layout="@layout/fragment_message"/>
+        tools:layout="@layout/fragment_message" />
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.firebasechatapp.ui.presentation.auth.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_login_to_signup"
+            app:destination="@id/signupFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signupFragment"
+        android:name="com.example.firebasechatapp.ui.presentation.auth.SignupFragment"
+        android:label="SignupFragment"
+        tools:layout="@layout/fragment_signup" />
 
 </navigation>
