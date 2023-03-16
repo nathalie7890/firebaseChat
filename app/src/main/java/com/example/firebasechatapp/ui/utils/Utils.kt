@@ -29,4 +29,13 @@ object Utils {
 
         diff.dispatchUpdatesTo(this)
     }
+
+    fun validate(vararg fields: String): Boolean {
+        fields.forEach { field ->
+            if (field.isEmpty()) {
+                return false
+            }
+        }
+        return true
+    }
 }
