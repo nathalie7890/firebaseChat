@@ -11,8 +11,23 @@ import com.example.firebasechatapp.databinding.FragmentHomeBinding
 import com.example.firebasechatapp.ui.viewModels.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
-//@AndroidEntryPoint
+@AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>() {
     override val viewModel: HomeViewModel by viewModels()
     override fun getLayoutResource() = R.layout.fragment_home
+
+    override fun onBindView(view: View, savedInstanceState: Bundle?) {
+        super.onBindView(view, savedInstanceState)
+
+        binding?.run {
+            btnStart.setOnClickListener {
+                val action = HomeFragmentDirections.actionHomeToMessage()
+                navController.navigate(action)
+            }
+        }
+    }
+
+    override fun onBindData(view: View) {
+        super.onBindData(view)
+    }
 }
