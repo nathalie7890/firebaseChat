@@ -15,20 +15,13 @@ class MessageViewModel @Inject constructor(
 ) :
     BaseViewModel() {
 
-    val messages: MutableLiveData<List<Message>> = MutableLiveData()
+    val messages: MutableLiveData<List<Message>> = MutableLiveData(
+        listOf(
+            Message("1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+            Message("2", "Sed et tortor eu nunc pharetra blandit ut vitae ligula."),
+            Message("3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+        )
+    )
 
-    override fun onViewCreated() {
-        super.onViewCreated()
-        viewModelScope.launch {
-            realtimeRepository.getAllMessages().collect {
-                Log.d("debugging", it.toString())
-            }
-        }
-    }
 
-    fun addMessage() {
-        viewModelScope.launch {
-            realtimeRepository.addMessage()
-        }
-    }
 }

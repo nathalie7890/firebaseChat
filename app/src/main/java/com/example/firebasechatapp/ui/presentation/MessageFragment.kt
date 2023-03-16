@@ -20,16 +20,14 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
     override fun onBindView(view: View, savedInstanceState: Bundle?) {
         super.onBindView(view, savedInstanceState)
         setupAdapter()
-        binding?.run {
-            btnAdd.setOnClickListener {
-                viewModel.addMessage()
-            }
-        }
     }
 
     override fun onBindData(view: View) {
         super.onBindData(view)
 
+        viewModel.messages.observe(viewLifecycleOwner) {
+            adapter.setMessages(it.toMutableList())
+        }
     }
 
     fun setupAdapter() {
