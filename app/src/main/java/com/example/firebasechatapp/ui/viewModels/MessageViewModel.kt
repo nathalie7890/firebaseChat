@@ -17,14 +17,14 @@ class MessageViewModel @Inject constructor(
 
     val messages: MutableLiveData<List<Message>> = MutableLiveData()
 
-//    override fun onViewCreated() {
-//        super.onViewCreated()
-//        viewModelScope.launch {
-//            realtimeRepository.getAllMessages().collect {
-//                Log.d("debugging", it.toString())
-//            }
-//        }
-//    }
+    override fun onViewCreated() {
+        super.onViewCreated()
+        viewModelScope.launch {
+            realtimeRepository.getAllMessages().collect {
+                Log.d("debugging", it.toString())
+            }
+        }
+    }
 
     fun addMessage() {
         viewModelScope.launch {

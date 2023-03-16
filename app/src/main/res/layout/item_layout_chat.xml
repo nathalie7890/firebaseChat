@@ -17,14 +17,14 @@
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/ivProfileImg"
-                android:layout_width="100dp"
+                android:layout_width="80dp"
                 android:layout_height="100dp"
-                android:src="@drawable/marilyn_monroe" />
+                android:src="@drawable/medusa" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="16dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -49,7 +49,7 @@
                 android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
+                android:layout_marginStart="10dp"
                 android:text="23:20"
                 android:textColor="@color/light_gray" />
         </LinearLayout>
