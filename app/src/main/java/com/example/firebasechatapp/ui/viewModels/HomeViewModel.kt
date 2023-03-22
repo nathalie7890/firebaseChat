@@ -50,7 +50,7 @@ class HomeViewModel @Inject constructor(
 
     fun addMessage() {
         viewModelScope.launch {
-            realtimeRepository.addMessage()
+            realtimeRepository.addMessage("")
         }
     }
 }

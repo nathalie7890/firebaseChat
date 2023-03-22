@@ -16,7 +16,7 @@ import kotlinx.coroutines.tasks.await
 class RealtimeRepository {
     val ref = Firebase.database.getReference("messages")
 
-    suspend fun addMessage(msg: Message) {
+    suspend fun addMessage(msg: String) {
         ref.push().setValue(msg).await()
     }
 
