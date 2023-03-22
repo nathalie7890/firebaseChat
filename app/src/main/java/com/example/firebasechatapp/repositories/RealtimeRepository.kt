@@ -16,15 +16,21 @@ import kotlinx.coroutines.tasks.await
 class RealtimeRepository {
     val ref = Firebase.database.getReference("messages")
 
-    suspend fun addMessage() {
-        ref.setValue("My first message").await()
+    suspend fun addMessage(msg: Message) {
+        ref.push().setValue(msg).await()
     }
 
-    fun getAllMessages() = callbackFlow<List<String>?> {
+    fun getAllMessages() = callbackFlow<List<Message>> {
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val value = snapshot.getValue<String>()
-                Log.d("debugging", "Message is: $value")
+                val messages = mutableListOf<Message>()
+                snapshot.children.forEach {
+                    val msg = it.getValue<Message>()
+                    msg?.let { message ->
+                        messages.add(message)
+                    }
+                }
+                trySend(messages)
             }
 
             override fun onCancelled(error: DatabaseError) {
