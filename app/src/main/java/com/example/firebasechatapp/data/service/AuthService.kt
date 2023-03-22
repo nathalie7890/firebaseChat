@@ -20,10 +20,7 @@ class AuthService(private val auth: FirebaseAuth, private val ref: CollectionRef
     }
 
     fun isLoggedIn(): Boolean {
-        val user = auth.currentUser
-        if (user == null) {
-            return false
-        }
+        auth.currentUser ?: return false
         return true
     }
 

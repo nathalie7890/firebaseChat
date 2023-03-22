@@ -29,7 +29,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
 
         binding?.run {
             btnAdd.setOnClickListener {
-                viewModel.addMessage()
+                val action = HomeFragmentDirections.actionHomeToMessage()
+                NavHostFragment.findNavController(this@HomeFragment).navigate(action)
             }
         }
     }

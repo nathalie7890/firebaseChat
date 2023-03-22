@@ -27,6 +27,7 @@ class MessageAdapter(private var items: MutableList<Message>) :
     override fun onBindViewHolder(holder: ItemMessageHolder, position: Int) {
         val item = items[position]
         holder.binding.run {
+            tvUserName.text = item.name
             tvMessage.text = item.message
 
             if(position % 2 != 0) {
