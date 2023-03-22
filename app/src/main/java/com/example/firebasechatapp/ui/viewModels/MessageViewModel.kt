@@ -17,9 +17,9 @@ class MessageViewModel @Inject constructor(
 
     val messages: MutableLiveData<List<Message>> = MutableLiveData(
         listOf(
-            Message("1", "Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
-            Message("2", "Sed et tortor eu nunc pharetra blandit ut vitae ligula."),
-            Message("3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+            Message("1", "", "Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+            Message("2", "", "Sed et tortor eu nunc pharetra blandit ut vitae ligula."),
+            Message("3", "", "Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
         )
     )
 
