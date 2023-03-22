@@ -27,6 +27,7 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
         binding?.run {
             btnSend.setOnClickListener {
                 val msg = etMessage.text.toString()
+                etMessage.setText("")
                 viewModel.sendMessage(msg)
             }
         }
@@ -42,7 +43,7 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
         }
     }
 
-    fun setupAdapter() {
+    private fun setupAdapter() {
         val layoutManager = LinearLayoutManager(requireContext())
         adapter = MessageAdapter(mutableListOf())
 

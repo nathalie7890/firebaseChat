@@ -7,16 +7,15 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
-import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.ktx.Firebase
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.callbackFlow
 import kotlinx.coroutines.tasks.await
 
 class RealtimeRepository {
-    val ref = Firebase.database.getReference("messages")
+    private val ref = Firebase.database.getReference("messages")
 
-    suspend fun addMessage(msg: String) {
+    suspend fun addMessage(msg: Message) {
         ref.push().setValue(msg).await()
     }
 
