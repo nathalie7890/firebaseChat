@@ -45,7 +45,7 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
 
     private fun setupAdapter() {
         val layoutManager = LinearLayoutManager(requireContext())
-        adapter = MessageAdapter(mutableListOf())
+        adapter = MessageAdapter(mutableListOf(), requireContext())
 
         binding?.rvMessages?.adapter = adapter
         binding?.rvMessages?.layoutManager = layoutManager
