@@ -70,7 +70,6 @@ class MessageAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
             binding.run {
-                cvMessage.setBackgroundResource(R.drawable.incoming_bubble)
                 tvUsername.text = message.name
                 tvMessage.text = message.message
             }
@@ -81,6 +80,7 @@ class MessageAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(message: Message) {
             binding.run {
+                cvMessage.setBackgroundResource(R.drawable.incoming_bubble)
                 tvUsername.text = message.name
                 tvMessage.text = message.message
             }

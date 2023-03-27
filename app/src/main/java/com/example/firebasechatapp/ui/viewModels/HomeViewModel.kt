@@ -43,7 +43,7 @@ class HomeViewModel @Inject constructor(
         super.onViewCreated()
         viewModelScope.launch {
             realtimeRepository.getAllMessages().collect {
-                Log.d("debugging", it.toString())
+//                Log.d("debugging", it.toString())
             }
         }
     }

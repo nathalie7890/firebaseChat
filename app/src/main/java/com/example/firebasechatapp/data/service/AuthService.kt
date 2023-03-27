@@ -9,9 +9,14 @@ class AuthService(private val auth: FirebaseAuth, private val ref: CollectionRef
 
     suspend fun register(user: User) {
         val res = auth.createUserWithEmailAndPassword(user.email, user.password).await()
-        if (res.user != null) {
-            ref.document(user.email).set(user)
+        res.user?.uid?.let {
+            ref.document(it).set(user)
         }
+//        ref.document(res.user!!.uid).set(user).await()
+//        val res = auth.createUserWithEmailAndPassword(user.email, user.password).await()
+//        if (res.user != null) {
+//            ref.document(user.email).set(user)
+//        }
     }
 
     suspend fun login(email: String, password: String): Boolean {
@@ -29,7 +34,7 @@ class AuthService(private val auth: FirebaseAuth, private val ref: CollectionRef
     }
 
     suspend fun getCurrentUser(): User? {
-        return auth.currentUser?.email?.let {
+        return auth.uid?.let {
             ref.document(it).get().await().toObject(User::class.java)
         }
     }

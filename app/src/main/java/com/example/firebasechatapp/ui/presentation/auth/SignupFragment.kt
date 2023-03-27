@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.example.firebasechatapp.R
+import com.example.firebasechatapp.data.model.User
 import com.example.firebasechatapp.databinding.FragmentSignupBinding
 import com.example.firebasechatapp.ui.presentation.BaseFragment
 import com.example.firebasechatapp.ui.viewModels.auth.SignUpViewModel

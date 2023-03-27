@@ -19,13 +19,26 @@ class MessageViewModel @Inject constructor(
     BaseViewModel() {
 
     fun getAllMessages(): Flow<List<Message>> {
-        return realtimeRepository.getAllMessages()
+        return realtimeRepository.getAllMessages(
+            authService.getUid() ?: "",
+            "GcUpd2akmxQsUBbKmTNLVosKmvw2"
+        )
     }
 
     fun sendMessage(msg: String) {
         viewModelScope.launch {
-            val message = Message(name = authService.getCurrentUser()?.name ?: "", message = msg)
-            safeApiCall {  realtimeRepository.addMessage(message) }
+            val user = authService.getCurrentUser()
+            user?.let {
+                val message = Message(name = user.name ?: "", message = msg)
+                safeApiCall {
+                    realtimeRepository.addMessage(
+                        authService.getUid() ?: "",
+                        "GcUpd2akmxQsUBbKmTNLVosKmvw2",
+                        message
+                    )
+                }
+
+            }
         }
     }
 }
