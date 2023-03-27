@@ -1,16 +1,13 @@
 package com.example.firebasechatapp.ui.adapters
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.marginEnd
+import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebasechatapp.MyApplication
 import com.example.firebasechatapp.R
-import com.example.firebasechatapp.data.model.Chat
 import com.example.firebasechatapp.data.model.Message
-import com.example.firebasechatapp.data.service.AuthService
 import com.example.firebasechatapp.databinding.ItemLayoutMessageBinding
 import com.example.firebasechatapp.ui.utils.Utils.update
 
@@ -59,6 +56,7 @@ class MessageAdapter(
     override fun getItemViewType(position: Int): Int {
         val item = items[position]
         val currentUsername = (context.applicationContext as MyApplication).username ?: ""
+
         if (currentUsername == item.name) {
             return INCOMING
         }

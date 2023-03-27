@@ -29,30 +29,32 @@ class RealtimeRepository {
     }
 
     suspend fun addMessage(uid1: String, uid2: String, msg: Message) {
-        ref.child(uid1).push().setValue(uid2).await()
-        ref.child(uid2).push().setValue(uid1).await()
-        ref.child(getCombinedUid(uid1, uid2)).push().setValue(msg).await()
+        ref.child(getCombinedUid(uid1, uid2) + "/messages")
+            .push()
+            .setValue(msg)
+            .await()
     }
 
 
     fun getAllMessages(uid1: String, uid2: String) = callbackFlow<List<Message>> {
-        val uid = getCombinedUid(uid1, uid2)
-        ref.child(uid).addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                val messages = mutableListOf<Message>()
-                snapshot.children.forEach {
-                    val msg = it.getValue<Message>()
-                    msg?.let { message ->
-                        messages.add(message)
-                    }
-                }
-                trySend(messages)
-            }
 
-            override fun onCancelled(error: DatabaseError) {
-                Log.d("debugging", "Failed to read messages", error.toException())
-            }
-        })
+        ref.child(getCombinedUid(uid1, uid2) + "/messages")
+            .addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    val messages = mutableListOf<Message>()
+                    snapshot.children.forEach {
+                        val msg = it.getValue<Message>()
+                        msg?.let { message ->
+                            messages.add(message)
+                        }
+                    }
+                    trySend(messages)
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    Log.d("debugging", "Failed to read messages", error.toException())
+                }
+            })
         awaitClose()
     }
 

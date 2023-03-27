@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import com.example.firebasechatapp.MyApplication
 import com.example.firebasechatapp.R
 import com.example.firebasechatapp.databinding.FragmentLoginBinding
 import com.example.firebasechatapp.ui.presentation.BaseFragment
@@ -23,6 +24,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
                 val email = etEmail.text.toString()
                 val pass = etPassword.text.toString()
                 viewModel.login(email, pass)
+
             }
         }
     }
@@ -32,6 +34,7 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
         lifecycleScope.launch {
             viewModel.loginFinish.collect {
+                (requireContext().applicationContext as MyApplication).fetchUser()
                 val action = LoginFragmentDirections.toHomeFragment()
                 navController.navigate(action)
             }

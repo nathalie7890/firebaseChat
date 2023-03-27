@@ -18,12 +18,15 @@ class MyApplication : Application() {
     lateinit var authService: AuthService
     var username: String? = null
 
-    override fun onCreate() {
-        super.onCreate()
-
+    fun fetchUser() {
         CoroutineScope(Dispatchers.IO).launch {
             val res = authService.getCurrentUser()
             username = res?.name
         }
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        fetchUser()
     }
 }

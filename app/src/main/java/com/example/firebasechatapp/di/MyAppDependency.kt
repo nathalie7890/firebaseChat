@@ -2,6 +2,7 @@ package com.example.firebasechatapp.di
 
 import com.example.firebasechatapp.data.service.AuthService
 import com.example.firebasechatapp.repositories.RealtimeRepository
+import com.example.firebasechatapp.repositories.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -47,5 +48,11 @@ object MyAppDependency {
     @Singleton
     fun getAuthRepository(auth: FirebaseAuth, db: FirebaseFirestore): AuthService {
         return AuthService(auth, db.collection("users"))
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(db: FirebaseFirestore): UserRepository {
+        return UserRepository(db.collection("users"))
     }
 }

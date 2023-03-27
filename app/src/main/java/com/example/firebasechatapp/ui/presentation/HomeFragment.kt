@@ -11,6 +11,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebasechatapp.R
 import com.example.firebasechatapp.data.model.Chat
+import com.example.firebasechatapp.data.model.User
 import com.example.firebasechatapp.databinding.FragmentHomeBinding
 import com.example.firebasechatapp.ui.adapters.ChatAdapter
 import com.example.firebasechatapp.ui.viewModels.HomeViewModel
@@ -28,16 +29,16 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         setupAdapter()
 
         binding?.run {
-            btnAdd.setOnClickListener {
-                val action = HomeFragmentDirections.actionHomeToMessage()
-                NavHostFragment.findNavController(this@HomeFragment).navigate(action)
-            }
+//            btnAdd.setOnClickListener {
+//                val action = HomeFragmentDirections.actionHomeToMessage()
+//                NavHostFragment.findNavController(this@HomeFragment).navigate(action)
+//            }
         }
     }
 
     override fun onBindData(view: View) {
         super.onBindData(view)
-        viewModel.chats.observe(viewLifecycleOwner) {
+        viewModel.users.observe(viewLifecycleOwner) {
             adapter.setChats(it.toMutableList())
         }
     }
@@ -46,8 +47,8 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         val layoutManager = LinearLayoutManager(requireContext())
         adapter = ChatAdapter(mutableListOf())
         adapter.listener = object : ChatAdapter.Listener {
-            override fun onClick(item: Chat) {
-                val action = item.id.let { HomeFragmentDirections.actionHomeToMessage() }
+            override fun onClick(item: User) {
+                val action = item.id.let { HomeFragmentDirections.actionHomeToMessage(item.id) }
                 NavHostFragment.findNavController(this@HomeFragment).navigate(action)
             }
         }

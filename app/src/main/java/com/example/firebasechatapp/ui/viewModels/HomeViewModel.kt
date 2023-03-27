@@ -5,52 +5,29 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.firebasechatapp.data.model.Chat
 import com.example.firebasechatapp.data.model.Message
+import com.example.firebasechatapp.data.model.User
+import com.example.firebasechatapp.data.service.AuthService
 import com.example.firebasechatapp.repositories.RealtimeRepository
+import com.example.firebasechatapp.repositories.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val realtimeRepository: RealtimeRepository
+    private val userRepository: UserRepository,
+    private val authService: AuthService
 ) : BaseViewModel() {
 
-    val messages: MutableLiveData<List<Message>> = MutableLiveData()
-    val chats: MutableLiveData<List<Chat>> = MutableLiveData(
-        listOf(
-            Chat(
-                "1",
-                "John Doe",
-                "Jane Doe",
-                listOf(Message("1", "Sed et tortor eu nunc pharetra blandit ut vitae ligula."))
-            ),
-            Chat(
-                "2",
-                "IronMan",
-                "Jane Doe",
-                listOf(Message("1", "Sed et tortor eu nunc pharetra blandit ut vitae ligula."))
-            ),
-            Chat(
-                "3",
-                "Captain America",
-                "Jane Doe",
-                listOf(Message("1", "Sed et tortor eu nunc pharetra blandit ut vitae ligula."))
-            ),
-        )
-    )
+    val users: MutableLiveData<List<User>> = MutableLiveData()
 
     override fun onViewCreated() {
         super.onViewCreated()
         viewModelScope.launch {
-            realtimeRepository.getAllMessages().collect {
-//                Log.d("debugging", it.toString())
+            val res = safeApiCall { userRepository.getUsers() }
+            res?.let {
+                users.value = it.filter { user -> authService.getUid() != user.id }
             }
-        }
-    }
-
-    fun addMessage() {
-        viewModelScope.launch {
-            realtimeRepository.addMessage(Message())
         }
     }
 }
