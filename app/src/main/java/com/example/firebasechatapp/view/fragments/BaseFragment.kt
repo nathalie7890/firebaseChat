@@ -50,6 +50,7 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
     open fun onBindView(view: View, savedInstanceState: Bundle?) {
         binding = DataBindingUtil.bind(view)
+        binding?.lifecycleOwner = viewLifecycleOwner
         lifecycleScope.launch {
             viewModel.error.collect {
                 Log.d("debugging", "Error: $it")

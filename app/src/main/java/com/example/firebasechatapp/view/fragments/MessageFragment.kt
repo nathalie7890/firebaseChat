@@ -11,6 +11,7 @@ import com.example.firebasechatapp.databinding.FragmentMessageBinding
 import com.example.firebasechatapp.view.adapters.MessageAdapter
 import com.example.firebasechatapp.viewModel.MessageViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -23,17 +24,8 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
 
     override fun onBindView(view: View, savedInstanceState: Bundle?) {
         super.onBindView(view, savedInstanceState)
+        binding?.viewModel = viewModel
         setupAdapter()
-
-        binding?.run {
-            btnSend.setOnClickListener {
-                val msg = etMessage.text.toString()
-                etMessage.setText("")
-                viewModel.sendMessage(args.id, msg)
-            }
-        }
-
-//        throw RuntimeException("Hello, this is an exception")
     }
 
     override fun onBindData(view: View) {
@@ -43,6 +35,7 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
             viewModel.getAllMessages(args.id).collect {
                 adapter.setMessages(it.toMutableList())
             }
+
         }
     }
 
