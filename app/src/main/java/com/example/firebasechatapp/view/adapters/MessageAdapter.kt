@@ -69,6 +69,7 @@ class MessageAdapter(
             binding.run {
                 tvUsername.text = message.name
                 tvMessage.text = message.message
+                tvTime.text = message.dateTime.substring(11, 16)
             }
         }
     }
@@ -80,6 +81,7 @@ class MessageAdapter(
                 cvMessage.setBackgroundResource(R.drawable.incoming_bubble)
                 tvUsername.text = message.name
                 tvMessage.text = message.message
+                tvTime.text = message.dateTime.substring(11, 16)
             }
         }
     }

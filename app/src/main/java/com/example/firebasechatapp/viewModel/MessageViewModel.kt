@@ -9,6 +9,8 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
+import java.text.SimpleDateFormat
+import java.util.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -28,10 +30,13 @@ class MessageViewModel @Inject constructor(
 
     fun sendMessage() {
         val uid2 = savedStateHandle.get<String>("id") ?: ""
+        val dateTimeFormat = SimpleDateFormat("dd/MM/yyyy HH:mm:ss", Locale.ENGLISH)
+        val dateTime = dateTimeFormat.format(Date())
+
         viewModelScope.launch {
             val user = authService.getCurrentUser()
             user?.let {
-                val message = Message(name = user.name, message = txt.value)
+                val message = Message(name = user.name, message = txt.value, dateTime = dateTime)
                 safeApiCall {
                     realtimeRepository.addMessage(
                         authService.getUid() ?: "",
@@ -39,10 +44,11 @@ class MessageViewModel @Inject constructor(
                         message
                     )
                 }
-                txt.value=""
+                txt.value = ""
             }
         }
     }
+
 }
 
 
