@@ -1,4 +1,4 @@
-package com.example.firebasechatapp.ui.viewModels
+package com.example.firebasechatapp.viewModel
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow

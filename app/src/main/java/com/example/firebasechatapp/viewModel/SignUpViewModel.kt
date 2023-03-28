@@ -1,24 +1,27 @@
-package com.example.firebasechatapp.ui.viewModels.auth
+package com.example.firebasechatapp.viewModel
 
 import androidx.lifecycle.viewModelScope
-import com.example.firebasechatapp.data.model.User
-import com.example.firebasechatapp.data.service.AuthService
-import com.example.firebasechatapp.ui.utils.Utils
-import com.example.firebasechatapp.ui.viewModels.BaseViewModel
+import com.example.firebasechatapp.model.model.User
+import com.example.firebasechatapp.service.AuthService
+import com.example.firebasechatapp.utils.Utils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(private val authRepo: AuthService) : BaseViewModel() {
     val signupFinish: MutableSharedFlow<Unit> = MutableSharedFlow()
+    val name: MutableStateFlow<String> = MutableStateFlow("")
+    val email: MutableStateFlow<String> = MutableStateFlow("")
+    val password : MutableStateFlow<String> = MutableStateFlow("")
 
-    fun signUp(name: String, email: String, password: String) {
-        if (Utils.validate(name, email, password)) {
+    fun signUp() {
+        if (Utils.validate(name.value, email.value, password.value)) {
             viewModelScope.launch {
                 safeApiCall {
-                    authRepo.register(User(name = name, email = email, password = password))
+                    authRepo.register(User(name = name.value, email = email.value, password = password.value))
                     signupFinish.emit(Unit)
                 }
             }

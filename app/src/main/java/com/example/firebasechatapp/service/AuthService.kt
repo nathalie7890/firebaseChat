@@ -1,6 +1,6 @@
-package com.example.firebasechatapp.data.service
+package com.example.firebasechatapp.service
 
-import com.example.firebasechatapp.data.model.User
+import com.example.firebasechatapp.model.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import kotlinx.coroutines.tasks.await

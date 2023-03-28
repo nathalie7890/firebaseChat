@@ -1,23 +1,25 @@
-package com.example.firebasechatapp.ui.viewModels.auth
+package com.example.firebasechatapp.viewModel
 
 import androidx.lifecycle.viewModelScope
-import com.example.firebasechatapp.data.service.AuthService
-import com.example.firebasechatapp.ui.utils.Utils
-import com.example.firebasechatapp.ui.viewModels.BaseViewModel
+import com.example.firebasechatapp.service.AuthService
+import com.example.firebasechatapp.utils.Utils
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val authRepo: AuthService) : BaseViewModel() {
     val loginFinish: MutableSharedFlow<Unit> = MutableSharedFlow()
+    val email: MutableStateFlow<String> = MutableStateFlow("")
+    val password: MutableStateFlow<String> = MutableStateFlow("")
 
-    fun login(email: String, password: String) {
-        if (Utils.validate(email, password)) {
+    fun login() {
+        if (Utils.validate(email.value, password.value)) {
             viewModelScope.launch {
                 safeApiCall {
-                    authRepo.login(email, password)
+                    authRepo.login(email.value, password.value )
                     loginFinish.emit(Unit)
                 }
             }

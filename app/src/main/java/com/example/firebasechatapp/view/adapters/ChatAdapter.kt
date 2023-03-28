@@ -1,13 +1,11 @@
-package com.example.firebasechatapp.ui.adapters
+package com.example.firebasechatapp.view.adapters
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.firebasechatapp.data.model.Chat
-import com.example.firebasechatapp.data.model.User
+import com.example.firebasechatapp.model.model.User
 import com.example.firebasechatapp.databinding.ItemLayoutChatBinding
-import com.example.firebasechatapp.ui.utils.Utils.update
+import com.example.firebasechatapp.utils.Utils.update
 
 class ChatAdapter(private var items: MutableList<User>) :
     RecyclerView.Adapter<ChatAdapter.ItemChatHolder>() {
@@ -17,7 +15,7 @@ class ChatAdapter(private var items: MutableList<User>) :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemChatHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val binding = ItemLayoutChatBinding.inflate(layoutInflater, parent, false)
-        return ChatAdapter.ItemChatHolder(binding)
+        return ItemChatHolder(binding)
     }
 
     override fun getItemCount(): Int {

@@ -1,20 +1,15 @@
-package com.example.firebasechatapp.ui.presentation
+package com.example.firebasechatapp.view.fragments
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebasechatapp.R
-import com.example.firebasechatapp.data.model.Chat
-import com.example.firebasechatapp.data.model.User
+import com.example.firebasechatapp.model.model.User
 import com.example.firebasechatapp.databinding.FragmentHomeBinding
-import com.example.firebasechatapp.ui.adapters.ChatAdapter
-import com.example.firebasechatapp.ui.viewModels.HomeViewModel
+import com.example.firebasechatapp.view.adapters.ChatAdapter
+import com.example.firebasechatapp.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

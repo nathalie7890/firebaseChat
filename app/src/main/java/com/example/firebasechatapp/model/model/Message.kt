@@ -1,4 +1,4 @@
-package com.example.firebasechatapp.data.model
+package com.example.firebasechatapp.model.model
 
 data class Message(
     val id: String = "",

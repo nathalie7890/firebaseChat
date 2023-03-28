@@ -16,7 +16,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.example.firebasechatapp.ui.presentation.HomeFragment"
+        android:name="com.example.firebasechatapp.view.fragments.HomeFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_home">
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/messageFragment"
-        android:name="com.example.firebasechatapp.ui.presentation.MessageFragment"
+        android:name="com.example.firebasechatapp.view.fragments.MessageFragment"
         android:label="ChatFragment"
         tools:layout="@layout/fragment_message">
         <argument
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.firebasechatapp.ui.presentation.auth.LoginFragment"
+        android:name="com.example.firebasechatapp.view.fragments.auth.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/signupFragment"
-        android:name="com.example.firebasechatapp.ui.presentation.auth.SignupFragment"
+        android:name="com.example.firebasechatapp.view.fragments.auth.SignupFragment"
         android:label="SignupFragment"
         tools:layout="@layout/fragment_signup" />
 

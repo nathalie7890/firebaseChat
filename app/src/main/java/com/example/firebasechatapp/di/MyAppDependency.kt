@@ -1,8 +1,8 @@
 package com.example.firebasechatapp.di
 
-import com.example.firebasechatapp.data.service.AuthService
-import com.example.firebasechatapp.repositories.RealtimeRepository
-import com.example.firebasechatapp.repositories.UserRepository
+import com.example.firebasechatapp.service.AuthService
+import com.example.firebasechatapp.model.repositories.RealtimeRepository
+import com.example.firebasechatapp.model.repositories.UserRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference

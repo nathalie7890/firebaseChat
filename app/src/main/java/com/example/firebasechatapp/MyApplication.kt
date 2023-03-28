@@ -2,7 +2,7 @@ package com.example.firebasechatapp
 
 import android.app.Application
 import android.util.Log
-import com.example.firebasechatapp.data.service.AuthService
+import com.example.firebasechatapp.service.AuthService
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

@@ -1,4 +1,4 @@
-package com.example.firebasechatapp.ui.presentation
+package com.example.firebasechatapp.view.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -8,10 +8,9 @@ import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebasechatapp.R
 import com.example.firebasechatapp.databinding.FragmentMessageBinding
-import com.example.firebasechatapp.ui.adapters.MessageAdapter
-import com.example.firebasechatapp.ui.viewModels.MessageViewModel
+import com.example.firebasechatapp.view.adapters.MessageAdapter
+import com.example.firebasechatapp.viewModel.MessageViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint

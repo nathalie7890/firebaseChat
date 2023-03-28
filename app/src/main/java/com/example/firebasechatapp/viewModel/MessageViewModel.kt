@@ -1,11 +1,9 @@
-package com.example.firebasechatapp.ui.viewModels
+package com.example.firebasechatapp.viewModel
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.example.firebasechatapp.data.model.Message
-import com.example.firebasechatapp.data.service.AuthService
-import com.example.firebasechatapp.repositories.RealtimeRepository
+import com.example.firebasechatapp.model.model.Message
+import com.example.firebasechatapp.service.AuthService
+import com.example.firebasechatapp.model.repositories.RealtimeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch

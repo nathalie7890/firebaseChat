@@ -1,15 +1,14 @@
-package com.example.firebasechatapp.ui.adapters
+package com.example.firebasechatapp.view.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.core.view.marginStart
 import androidx.recyclerview.widget.RecyclerView
 import com.example.firebasechatapp.MyApplication
 import com.example.firebasechatapp.R
-import com.example.firebasechatapp.data.model.Message
+import com.example.firebasechatapp.model.model.Message
 import com.example.firebasechatapp.databinding.ItemLayoutMessageBinding
-import com.example.firebasechatapp.ui.utils.Utils.update
+import com.example.firebasechatapp.utils.Utils.update
 
 class MessageAdapter(
     private var items: MutableList<Message>,

@@ -1,4 +1,4 @@
-package com.example.firebasechatapp.ui.presentation
+package com.example.firebasechatapp.view.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.example.firebasechatapp.ui.viewModels.BaseViewModel
+import com.example.firebasechatapp.viewModel.BaseViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 

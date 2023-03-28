@@ -1,8 +1,7 @@
-package com.example.firebasechatapp.repositories
+package com.example.firebasechatapp.model.repositories
 
 import android.util.Log
-import com.example.firebasechatapp.data.model.Friend
-import com.example.firebasechatapp.data.model.Message
+import com.example.firebasechatapp.model.model.Message
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
