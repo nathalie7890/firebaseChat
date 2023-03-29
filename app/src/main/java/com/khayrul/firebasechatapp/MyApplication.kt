@@ -1,7 +1,7 @@
 package com.khayrul.firebasechatapp
 
 import android.app.Application
-import com.khayrul.firebasechatapp.data.service.AuthService
+import com.khayrul.firebasechatapp.service.AuthService
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -14,12 +14,15 @@ class MyApplication:Application() {
     lateinit var authService: AuthService
     var username: String? = null
 
-    override fun onCreate() {
-        super.onCreate()
-
+    fun fetchUserName() {
         CoroutineScope(Dispatchers.IO).launch {
             val res = authService.getCurrentUser()
             username = res?.name
         }
+    }
+
+    override fun onCreate() {
+        super.onCreate()
+        fetchUserName()
     }
 }

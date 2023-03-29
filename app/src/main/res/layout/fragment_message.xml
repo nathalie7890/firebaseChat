@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.khayrul.firebasechatapp.viewModel.MessageViewModel" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -81,6 +87,7 @@
                     android:id="@+id/etMessage"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:text="@={viewModel.txt}"
                     android:layout_marginEnd="10dp"
                     android:layout_weight="1"
                     android:background="@drawable/orange_rounded_input"
@@ -94,6 +101,7 @@
                     android:id="@+id/btnSend"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:onClick="@{() -> viewModel.sendMessage()}"
                     android:layout_gravity="end"
                     android:backgroundTint="@color/orange"
                     android:textAllCaps="false"

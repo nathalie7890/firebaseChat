@@ -1,7 +1,7 @@
 package com.khayrul.firebasechatapp.di
 
-import com.khayrul.firebasechatapp.data.service.AuthService
-import com.khayrul.firebasechatapp.repositories.RealtimeRepository
+import com.khayrul.firebasechatapp.service.AuthService
+import com.khayrul.firebasechatapp.model.repositories.RealtimeRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.khayrul.firebasechatapp.model.repositories.UserRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -47,5 +48,11 @@ object MyAppDependency {
     @Singleton
     fun getAuthRepository(auth: FirebaseAuth, db: FirebaseFirestore): AuthService {
         return AuthService(auth, db.collection("users"))
+    }
+
+    @Provides
+    @Singleton
+    fun provideUserRepository(db: FirebaseFirestore): UserRepository {
+        return UserRepository(db.collection("users"))
     }
 }

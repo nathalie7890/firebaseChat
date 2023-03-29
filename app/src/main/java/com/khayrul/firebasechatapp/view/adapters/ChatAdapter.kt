@@ -1,13 +1,13 @@
-package com.khayrul.firebasechatapp.ui.adapters
+package com.khayrul.firebasechatapp.view.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.khayrul.firebasechatapp.data.model.Chat
-import com.khayrul.firebasechatapp.ui.utils.Utils.update
+import com.khayrul.firebasechatapp.model.model.User
+import com.khayrul.firebasechatapp.utils.Utils.update
 import com.khayrul.firebasechatapp.databinding.ItemLayoutChatBinding
 
-class ChatAdapter(private var items: MutableList<Chat>) :
+class ChatAdapter(private var items: MutableList<User>) :
     RecyclerView.Adapter<ChatAdapter.ItemChatHolder>() {
 
     var listener: Listener? = null
@@ -25,15 +25,15 @@ class ChatAdapter(private var items: MutableList<Chat>) :
     override fun onBindViewHolder(holder: ItemChatHolder, position: Int) {
         val item = items[position]
         holder.binding.run {
-            tvUsername.text = item.user1
-            tvMessage.text = item.messages[0].message
+            tvUsername.text = item.name
+            tvMessage.text = item.email
 
             cvChatItem.setOnClickListener { listener?.onClick(item) }
         }
 
     }
 
-    fun setChats(items: MutableList<Chat>) {
+    fun setChats(items: MutableList<User>) {
         val oldItems = this.items
         this.items = items.toMutableList()
         update(oldItems, items) { chat1, chat2 ->
@@ -46,6 +46,6 @@ class ChatAdapter(private var items: MutableList<Chat>) :
 
 
     interface Listener {
-        fun onClick(item: Chat)
+        fun onClick(item: User)
     }
 }

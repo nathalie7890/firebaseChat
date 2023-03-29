@@ -1,4 +1,4 @@
-package com.khayrul.firebasechatapp.ui.utils
+package com.khayrul.firebasechatapp.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView

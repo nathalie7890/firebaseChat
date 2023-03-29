@@ -1,14 +1,15 @@
-package com.khayrul.firebasechatapp.ui.presentation
+package com.khayrul.firebasechatapp.view.fragments
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.khayrul.firebasechatapp.R
 import com.khayrul.firebasechatapp.databinding.FragmentMessageBinding
-import com.khayrul.firebasechatapp.ui.adapters.MessageAdapter
-import com.khayrul.firebasechatapp.ui.viewModels.MessageViewModel
+import com.khayrul.firebasechatapp.view.adapters.MessageAdapter
+import com.khayrul.firebasechatapp.viewModel.MessageViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -16,21 +17,16 @@ import kotlinx.coroutines.launch
 class MessageFragment : BaseFragment<FragmentMessageBinding>() {
     private lateinit var adapter: MessageAdapter
     override val viewModel: MessageViewModel by viewModels()
+    private val args: MessageFragmentArgs by navArgs()
 
     override fun getLayoutResource() = R.layout.fragment_message
 
     override fun onBindView(view: View, savedInstanceState: Bundle?) {
         super.onBindView(view, savedInstanceState)
+        binding?.viewModel = viewModel
         setupAdapter()
 
-
         binding?.run {
-            btnSend.setOnClickListener {
-                val msg = etMessage.text.toString()
-                etMessage.setText("")
-                viewModel.sendMessage(msg)
-            }
-
             btnCrash.setOnClickListener {
                 throw RuntimeException("Test Crash")
             }
@@ -41,7 +37,7 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
         super.onBindData(view)
 
         lifecycleScope.launch {
-            viewModel.getAllMessages().collect {
+            viewModel.getAllMessages(args.id).collect {
                 adapter.setMessages(it.toMutableList())
             }
         }

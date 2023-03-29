@@ -3,11 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.khayrul.firebasechatapp.viewModel.SignUpViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/dark_bg"
-        tools:context=".ui.presentation.auth.SignupFragment">
+        tools:context=".view.fragments.auth.SignupFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineTop"
@@ -37,7 +43,7 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.9" />
 
-        <!-- TODO: Update blank fragment layout -->
+
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -89,6 +95,7 @@
                 android:id="@+id/etUsername"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@={viewModel.name}"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/orange_rounded_input"
                 android:hint="Username"
@@ -101,6 +108,7 @@
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@={viewModel.email}"
                 android:background="@drawable/orange_rounded_input"
                 android:hint="Email"
                 android:padding="10dp"
@@ -113,6 +121,7 @@
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@={viewModel.password}"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/orange_rounded_input"
                 android:textColor="@color/orange"
@@ -135,6 +144,7 @@
             android:id="@+id/btnSignup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.signUp()}"
             android:backgroundTint="@color/orange"
             android:fontFamily="@font/roboto"
             android:paddingHorizontal="30dp"

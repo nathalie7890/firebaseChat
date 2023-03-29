@@ -1,12 +1,12 @@
-package com.khayrul.firebasechatapp.ui.adapters
+package com.khayrul.firebasechatapp.view.adapters
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.khayrul.firebasechatapp.MyApplication
-import com.khayrul.firebasechatapp.data.model.Message
-import com.khayrul.firebasechatapp.ui.utils.Utils.update
+import com.khayrul.firebasechatapp.model.model.Message
+import com.khayrul.firebasechatapp.utils.Utils.update
 import com.khayrul.firebasechatapp.R
 import com.khayrul.firebasechatapp.databinding.ItemLayoutMessageBinding
 

@@ -1,11 +1,12 @@
-package com.khayrul.firebasechatapp.ui.presentation.auth
+package com.khayrul.firebasechatapp.view.fragments.auth
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
-import com.khayrul.firebasechatapp.ui.presentation.BaseFragment
-import com.khayrul.firebasechatapp.ui.viewModels.auth.LoginViewModel
+import com.khayrul.firebasechatapp.MyApplication
+import com.khayrul.firebasechatapp.view.fragments.BaseFragment
+import com.khayrul.firebasechatapp.viewModel.LoginViewModel
 import com.khayrul.firebasechatapp.R
 import com.khayrul.firebasechatapp.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,11 +19,11 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
     override fun onBindView(view: View, savedInstanceState: Bundle?) {
         super.onBindView(view, savedInstanceState)
+        binding?.viewModel = viewModel
+
         binding?.run {
-            btnLogin.setOnClickListener {
-                val email = etEmail.text.toString()
-                val pass = etPassword.text.toString()
-                viewModel.login(email, pass)
+            btnSignup.setOnClickListener {
+                navigateToSignUp()
             }
         }
     }
@@ -32,14 +33,19 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>() {
 
         lifecycleScope.launch {
             viewModel.loginFinish.collect {
-                val action = LoginFragmentDirections.toHomeFragment()
-                navController.navigate(action)
+                navigateToHome()
             }
         }
-        binding?.btnSignup?.setOnClickListener {
-            val action = LoginFragmentDirections.actionLoginToSignup()
-            navController.navigate(action)
+    }
 
-        }
+    private fun navigateToSignUp() {
+        val action = LoginFragmentDirections.actionLoginToSignup()
+        navController.navigate(action)
+    }
+
+    private fun navigateToHome() {
+        (requireContext().applicationContext as MyApplication).fetchUserName()
+        val action = LoginFragmentDirections.toHomeFragment()
+        navController.navigate(action)
     }
 }

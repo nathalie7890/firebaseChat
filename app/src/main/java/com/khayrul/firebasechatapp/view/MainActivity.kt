@@ -1,4 +1,4 @@
-package com.khayrul.firebasechatapp
+package com.khayrul.firebasechatapp.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,9 +10,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.khayrul.firebasechatapp.data.service.AuthService
+import com.khayrul.firebasechatapp.service.AuthService
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
+import com.khayrul.firebasechatapp.R
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

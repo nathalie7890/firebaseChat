@@ -1,4 +1,4 @@
-package com.khayrul.firebasechatapp.ui.presentation
+package com.khayrul.firebasechatapp.view.fragments
 
 import android.os.Bundle
 import android.util.Log
@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import com.khayrul.firebasechatapp.ui.viewModels.BaseViewModel
+import com.khayrul.firebasechatapp.viewModel.BaseViewModel
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.launch
 
@@ -50,9 +50,9 @@ abstract class BaseFragment<T : ViewDataBinding> : Fragment() {
 
     open fun onBindView(view: View, savedInstanceState: Bundle?) {
         binding = DataBindingUtil.bind(view)
+        binding?.lifecycleOwner = viewLifecycleOwner
         lifecycleScope.launch {
             viewModel.error.collect {
-                Log.d("debugging", "Error: $it")
                 Snackbar.make(view, it, Snackbar.LENGTH_LONG).show()
             }
         }

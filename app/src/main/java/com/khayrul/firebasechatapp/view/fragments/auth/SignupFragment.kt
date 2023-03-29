@@ -1,4 +1,4 @@
-package com.khayrul.firebasechatapp.ui.presentation.auth
+package com.khayrul.firebasechatapp.view.fragments.auth
 
 import android.os.Bundle
 import android.view.View
@@ -6,8 +6,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import com.khayrul.firebasechatapp.R
 import com.khayrul.firebasechatapp.databinding.FragmentSignupBinding
-import com.khayrul.firebasechatapp.ui.presentation.BaseFragment
-import com.khayrul.firebasechatapp.ui.viewModels.auth.SignUpViewModel
+import com.khayrul.firebasechatapp.view.fragments.BaseFragment
+import com.khayrul.firebasechatapp.viewModel.SignUpViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
@@ -19,15 +19,7 @@ class SignupFragment : BaseFragment<FragmentSignupBinding>() {
 
     override fun onBindView(view: View, savedInstanceState: Bundle?) {
         super.onBindView(view, savedInstanceState)
-        binding?.run {
-            btnSignup.setOnClickListener {
-                val name = etUsername.text.toString()
-                val email = etEmail.text.toString()
-                val pass = etPassword.text.toString()
-
-                viewModel.signUp(name, email, pass)
-            }
-        }
+        binding?.viewModel = viewModel
     }
 
     override fun onBindData(view: View) {

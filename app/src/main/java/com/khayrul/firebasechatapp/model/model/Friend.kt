@@ -1,4 +1,4 @@
-package com.khayrul.firebasechatapp.data.model
+package com.khayrul.firebasechatapp.model.model
 
 data class Friend(
     val name: String = "",

@@ -3,11 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable
+            name="viewModel"
+            type="com.khayrul.firebasechatapp.viewModel.LoginViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/dark_bg"
-        tools:context=".ui.presentation.auth.LoginFragment">
+        tools:context=".view.fragments.auth.LoginFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineTop"
@@ -37,7 +43,6 @@
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.9" />
 
-        <!-- TODO: Update blank fragment layout -->
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -89,6 +94,7 @@
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@={viewModel.email}"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/orange_rounded_input"
                 android:hint="Email"
@@ -101,6 +107,7 @@
                 android:id="@+id/etPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@={viewModel.password}"
                 android:layout_marginBottom="8dp"
                 android:background="@drawable/orange_rounded_input"
                 android:hint="Password"
@@ -123,6 +130,7 @@
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.login()}"
             android:backgroundTint="@color/orange"
             android:fontFamily="@font/roboto"
             android:paddingHorizontal="30dp"
