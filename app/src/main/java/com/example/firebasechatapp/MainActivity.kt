@@ -11,7 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.example.firebasechatapp.data.service.AuthService
+import com.example.firebasechatapp.service.AuthService
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.navigation.NavigationView
 import dagger.hilt.android.AndroidEntryPoint
@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             findNavController(R.id.navHostFragment).navigate(R.id.to_login_fragment)
             drawerLayout.closeDrawer(GravityCompat.START)
         }
+
         if (!authRepo.isLoggedIn()) {
             findNavController(R.id.navHostFragment).navigate(R.id.loginFragment)
         }

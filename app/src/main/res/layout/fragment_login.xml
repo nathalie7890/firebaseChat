@@ -3,11 +3,18 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.firebasechatapp.viewModel.LoginViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/dark_bg"
-        tools:context=".ui.presentation.auth.LoginFragment">
+        tools:context=".view.fragments.auth.LoginFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineTop"
@@ -93,6 +100,7 @@
                 android:background="@drawable/orange_rounded_input"
                 android:hint="Email"
                 android:padding="10dp"
+                android:text="@={viewModel.email}"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textColorHint="@color/light_gray" />
@@ -105,6 +113,7 @@
                 android:background="@drawable/orange_rounded_input"
                 android:hint="Password"
                 android:padding="10dp"
+                android:text="@={viewModel.password}"
                 android:textAlignment="center"
                 android:textColor="@color/orange"
                 android:textColorHint="@color/light_gray" />
@@ -125,6 +134,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange"
             android:fontFamily="@font/roboto"
+            android:onClick="@{() -> viewModel.login()}"
             android:paddingHorizontal="30dp"
             android:paddingVertical="13dp"
             android:text="Start Messaging"

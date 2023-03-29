@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "140342457496",
+    "firebase_url": "https://firefoxchatapp-default-rtdb.firebaseio.com",
     "project_id": "firefoxchatapp",
     "storage_bucket": "firefoxchatapp.appspot.com"
   },
