@@ -1,17 +1,18 @@
 package com.example.firebasechatapp.service
 
-import com.example.firebasechatapp.model.model.User
+import com.example.firebasechatapp.data.model.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import kotlinx.coroutines.tasks.await
 
 class AuthService(private val auth: FirebaseAuth, private val ref: CollectionReference) {
 
-    suspend fun register(user: User) {
+    suspend fun register(user: User):Boolean {
         val res = auth.createUserWithEmailAndPassword(user.email, user.password).await()
         res.user?.uid?.let {
             ref.document(it).set(user.copy(id = it))
         }
+        return true
 //        ref.document(res.user!!.uid).set(user).await()
 //        val res = auth.createUserWithEmailAndPassword(user.email, user.password).await()
 //        if (res.user != null) {
