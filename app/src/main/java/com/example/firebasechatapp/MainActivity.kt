@@ -1,6 +1,7 @@
 package com.example.firebasechatapp
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -17,6 +18,7 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.firebasechatapp.service.AuthService
+import com.example.firebasechatapp.service.NotificationService
 import com.example.firebasechatapp.utils.Constants
 import com.example.firebasechatapp.utils.NotificationUtils
 import com.google.android.material.button.MaterialButton
@@ -62,7 +64,9 @@ class MainActivity : AppCompatActivity() {
             findNavController(R.id.navHostFragment).navigate(R.id.loginFragment)
         }
 
-
+        // Opens the settings to allow app to have notifications access
+//        startActivity(Intent("android.settings.ACTION_NOTIFICATION_LISTENER_SETTINGS"))
+        startService(Intent(this, NotificationService::class.java))
     }
 
     override fun onSupportNavigateUp(): Boolean {
