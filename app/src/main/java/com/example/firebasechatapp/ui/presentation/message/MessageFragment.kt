@@ -3,6 +3,7 @@ package com.example.firebasechatapp.ui.presentation.message
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,7 +19,7 @@ import kotlinx.coroutines.launch
 class MessageFragment : BaseFragment<FragmentMessageBinding>() {
     private lateinit var adapter: MessageAdapter
     override val viewModel: MessageViewModel by viewModels()
-    private val args: MessageFragmentArgs by navArgs()
+//    private val args: MessageFragmentArgs by navArgs()
 
     override fun getLayoutResource() = R.layout.fragment_message
 
@@ -31,11 +32,8 @@ class MessageFragment : BaseFragment<FragmentMessageBinding>() {
     override fun onBindData(view: View) {
         super.onBindData(view)
 
-        lifecycleScope.launch {
-            viewModel.getAllMessages(args.id).collect {
-                adapter.setMessages(it.toMutableList())
-            }
-
+        viewModel.messages.asLiveData().observe(viewLifecycleOwner) {
+            adapter.setMessages(it.toMutableList())
         }
     }
 

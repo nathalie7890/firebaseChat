@@ -55,7 +55,7 @@ class RealtimeRepositoryImplementation: RealtimeRepository {
                     Log.d("debugging", "Failed to read messages", error.toException())
                 }
             })
-        awaitClose()
+        awaitClose {}
     }
 
     override fun getAllMessages() = callbackFlow<List<Message>> {

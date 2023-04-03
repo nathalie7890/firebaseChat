@@ -5,6 +5,7 @@ import com.example.firebasechatapp.data.repository.RealtimeRepositoryImplementat
 import com.example.firebasechatapp.data.repository.UserRepositoryImplementation
 import com.example.firebasechatapp.domain.repository.RealtimeRepository
 import com.example.firebasechatapp.domain.repository.UserRepository
+import com.example.firebasechatapp.domain.useCase.GetUsersUseCase
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
