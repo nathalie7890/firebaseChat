@@ -11,6 +11,7 @@ import com.example.firebasechatapp.databinding.FragmentHomeBinding
 import com.example.firebasechatapp.ui.presentation.adapters.ChatAdapter
 import com.example.firebasechatapp.ui.presentation.base.BaseFragment
 import com.example.firebasechatapp.ui.presentation.home.viewModel.HomeViewModelImpl
+import com.example.firebasechatapp.utils.NotificationUtils
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -25,10 +26,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         setupAdapter()
 
         binding?.run {
-//            btnAdd.setOnClickListener {
-//                val action = HomeFragmentDirections.actionHomeToMessage()
-//                NavHostFragment.findNavController(this@HomeFragment).navigate(action)
-//            }
+            btnCreateNotification.setOnClickListener {
+                NotificationUtils.createNotification(
+                    requireContext(),
+                    "First Notification",
+                    "We are learning notification"
+                )
+            }
         }
     }
 
