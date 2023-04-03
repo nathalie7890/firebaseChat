@@ -4,7 +4,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.khayrul.firebasechatapp.viewModel.MessageViewModel" />
+            type="com.khayrul.firebasechatapp.ui.presentation.message.viewModel.MessageViewModel" />
     </data>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"

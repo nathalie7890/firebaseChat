@@ -6,14 +6,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.khayrul.firebasechatapp.viewModel.SignUpViewModel" />
+            type="com.khayrul.firebasechatapp.ui.presentation.register.viewModel.SignUpViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/dark_bg"
-        tools:context=".view.fragments.auth.SignupFragment">
+        tools:context=".ui.presentation.register.SignupFragment">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guidelineTop"
