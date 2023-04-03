@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firebasechatapp.R
 import com.example.firebasechatapp.model.model.User
 import com.example.firebasechatapp.databinding.FragmentHomeBinding
+import com.example.firebasechatapp.utils.NotificationUtils
 import com.example.firebasechatapp.view.adapters.ChatAdapter
 import com.example.firebasechatapp.viewModel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,6 +25,13 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>() {
         setupAdapter()
 
         binding?.run {
+            btnCreateNotification.setOnClickListener {
+                NotificationUtils.createNotification(
+                    requireContext(),
+                    "First Notification",
+                    "We are learning notification"
+                )
+            }
 //            btnAdd.setOnClickListener {
 //                val action = HomeFragmentDirections.actionHomeToMessage()
 //                NavHostFragment.findNavController(this@HomeFragment).navigate(action)
